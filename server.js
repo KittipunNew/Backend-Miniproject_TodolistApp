@@ -26,6 +26,8 @@ app.use(express.json()); // ให้ Express จัดการ JSON request bo
 app.use(
   cors({
     origin: [
+      'miniproject-todolist-app.vercel.app',
+      'miniproject-todolist-app-kittipuns-projects.vercel.app',
       'https://miniproject-todolist-app.vercel.app/',
       'https://miniproject-todolist-app-git-main-kittipuns-projects.vercel.app/',
       'http://localhost:5173',
