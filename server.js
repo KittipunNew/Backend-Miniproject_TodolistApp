@@ -8,7 +8,9 @@ import {
   updateTask,
   deleteTask,
 } from './controller/taskController.js';
+import dotenv from 'dotenv';
 
+dotenv.config();
 // ตั้งค่า Express App
 const app = express();
 const PORT = 3000;
