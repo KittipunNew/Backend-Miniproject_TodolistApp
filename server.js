@@ -23,7 +23,14 @@ app.use(morgan('dev')); // Log request ที่เข้ามายังเ�
 app.use(express.json()); // ให้ Express จัดการ JSON request body
 
 // Configure CORS
-app.use(cors({ origin: 'https://miniproject-todolist-app.vercel.app/' }));
+app.use(
+  cors({
+    origin: [
+      'https://miniproject-todolist-app.vercel.app/',
+      'http://localhost:5173/',
+    ], // เพิ่มโดเมนที่อนุญาตให้เข้าถึง API
+  })
+);
 
 app.get('/', taskList);
 app.post('/', addTask);
