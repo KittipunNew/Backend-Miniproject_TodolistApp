@@ -26,10 +26,9 @@ app.use(express.json()); // ให้ Express จัดการ JSON request bo
 app.use(
   cors({
     origin: [
-      'https://miniproject-todolist-app.vercel.app',
-      'https://miniproject-todolist-app-git-main-kittipuns-projects.vercel.app',
+      'https://frontend-miniproject-todolist-app.vercel.app',
       'http://localhost:5173',
-    ], // เพิ่มโดเมนที่อนุญาตให้เข้าถึง API
+    ],
   })
 );
 
