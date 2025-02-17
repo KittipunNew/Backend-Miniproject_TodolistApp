@@ -22,8 +22,24 @@ connectDB();
 app.use(morgan('dev')); // Log request ที่เข้ามายังเซิร์ฟเวอร์
 app.use(express.json()); // ให้ Express จัดการ JSON request body
 
+const allowedOrigins = ['https://miniproject-todolist-app.vercel.app/'];
+
 // Configure CORS
-app.use(cors());
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      // Allow requests with no origin (e.g., mobile apps or curl)
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.includes(origin)) {
+        callback(null, true); // Allow the origin
+      } else {
+        callback(new Error('Not allowed by CORS')); // Block the origin
+      }
+    },
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true, // Allow cookies or Authorization headers
+  })
+);
 
 app.get('/', taskList);
 app.post('/', addTask);
