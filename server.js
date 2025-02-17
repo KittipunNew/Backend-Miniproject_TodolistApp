@@ -27,6 +27,7 @@ app.use(
   cors({
     origin: [
       'https://miniproject-todolist-app.vercel.app',
+      'https://miniproject-todolist-app-git-main-kittipuns-projects.vercel.app',
       'http://localhost:5173',
     ], // เพิ่มโดเมนที่อนุญาตให้เข้าถึง API
   })
