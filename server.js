@@ -2,18 +2,15 @@ import express from 'express';
 import connectDB from './config/mongodb.js';
 import morgan from 'morgan';
 import cors from 'cors';
-import {
-  addTask,
-  taskList,
-  updateTask,
-  deleteTask,
-} from './controller/taskController.js';
 import dotenv from 'dotenv';
+
+import authRoutes from './routes/authRoutes.js';
+import taskRoutes from './routes/taskRoutes.js';
 
 dotenv.config();
 // ตั้งค่า Express App
 const app = express();
-const PORT = 3000;
+const PORT = 3001;
 
 // Servive connections
 connectDB();
@@ -28,13 +25,12 @@ app.use(
     origin: [
       'https://frontend-miniproject-todolist-app.vercel.app',
       'http://localhost:5173',
+      'http://localhost:5175',
     ],
   })
 );
 
-app.get('/', taskList);
-app.post('/', addTask);
-app.put('/', updateTask);
-app.delete('/', deleteTask);
+app.use('/', authRoutes);
+app.use('/', taskRoutes);
 
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}🚀`));
