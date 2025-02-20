@@ -10,7 +10,7 @@ import taskRoutes from './routes/taskRoutes.js';
 dotenv.config();
 // ตั้งค่า Express App
 const app = express();
-const PORT = 3001;
+const port = process.env.PORT || 4000;
 
 // Servive connections
 connectDB();
@@ -33,4 +33,4 @@ app.use(
 app.use('/', authRoutes);
 app.use('/', taskRoutes);
 
-app.listen(PORT, () => console.log(`Server is running on port ${PORT}🚀`));
+app.listen(port, () => console.log(`Server is running on port ${port}🚀`));
